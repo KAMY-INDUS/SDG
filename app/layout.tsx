@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from './../components/Navbar';
 import AuthProvider from './../components/AuthProvider';
+import Mobnav from './../components/Mobnav';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,9 @@ export default function RootLayout({
           <main className=" block">
           <Navbar />
             {children}
+            <div className="sm:hidden flex">
+              <Mobnav/>
+            </div>
           </main>
           </AuthProvider>
       </body>

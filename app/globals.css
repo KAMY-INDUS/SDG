@@ -18,6 +18,7 @@ body{
   color: var(--text);
 }
 nav{
+  z-index: 999;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,7 +28,7 @@ nav{
   right: 0;
   background: linear-gradient(135deg,rgb(128, 255, 0,0.3),rgb(128, 255, 0,0.05));
   border: 1px solid rgb(0, 128, 0,0.1);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(20px);
   border-radius: 0px 0px 10px 10px;
 }
 nav ul{
@@ -64,6 +65,7 @@ nav ul{
   gap: 10px;
 }
 .homebtn{
+
   background: linear-gradient(135deg,rgb(128, 255, 0,0.3),rgb(128, 255, 0,0.05));
   padding: 15px 20px;
   position: relative;
@@ -91,5 +93,224 @@ nav ul{
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 20px;
   padding-top: 150px;
+}
+.dropdown{
+  background-color: whitesmoke;
+  outline: none;
+  z-index:999;
+}
+.form{
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 25px;
+  align-items: center;
+  background:linear-gradient(135deg,rgb(144, 238, 144,0.3),rgb(144, 238, 144,0.5));
+  border-radius: 20px;
+}
+.input{
+  display: flex;
+  background-color: white;
+  align-items: center;
+  padding: 10px;
+  gap:5px;
+  border-radius: 10px;
+  color: grey;
+  width: 300px;
+  outline:none;
+}
+.itemform{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+#itemImage{
+  min-width: 10px;
+}
+.input input{
+  outline: none;
+  flex: 1;
+  color:black;
+}
+.input textarea{
+  padding:1px;
+  outline:none;
+  flex:1;
+  color:black;
+}
+#upload{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding-top:50px;
+}
+.form button[type="submit"]{
+  background-color: lightgreen;
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+.profiledrop{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap:15px;
+  background-color: rgb(144, 238, 144,0.2);
+  backdrop-filter:blur(10px);
+}
+#about{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  flex-direction: column;
+  gap: 20px;
+}
+.cards{
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+}
+.userimg{
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  object-position: center;
+}
+.card{
+  padding:20px;
+  display: flex;
+  gap: 10px;
+  border-radius:10px;
+  background-color: rgb(228, 255, 228);
+  flex-direction:column;
+}
+.cardtop{
+  display: flex;
+  align-items: center;
+  gap:10px;
+}
+.creatorhead{
+  transform: rotate(-90deg);
+  position: relative;
+  color: rgb(0 0 0 / 20%);
+  background:linear-gradient(90deg,rgb(144, 238, 144,0.9),rgb(0, 0, 0,0.05));
+  background-clip:text;
+  font-weight: 800;
+  font-size:24px;
+}
+.goals{
+  transform: rotate(-90deg);
+  color: rgb(0 0 0 / 20%);
+  background:linear-gradient(90deg,rgb(144, 238, 144,0.9),rgb(0, 0, 0,0.05));
+  background-clip:text;
+  font-weight: 800;
+  font-size:24px;
+}
+@media (max-width:800px) {
+  .creatorhead{
+    transform: rotate(0deg);
+    text-align: center;
+    left:0px;
+    margin: 0px;
+  }
+  .cards{
+    gap: 20px;
+    flex-direction: column;
+  }
+}
+@media (max-width:640px){
+  #order{
+    padding-bottom:100px;
+  }
+  #about{
+    padding-bottom: 100px;
+  }
+  #profile{
+  padding-top:150px;
+  padding-bottom: 100px;
+  }
+}
+.mobnav{
+  position: fixed;
+  bottom: 0;
+  background-color: rgb(144, 238, 144,0.4);
+  left:0;
+  right:0;
+  display: flex;
+  padding:10px 25px;
+  z-index:999;
+  backdrop-filter: blur(10px);
+  align-items:center;
+  justify-content:space-between;
+}
+.goalcard{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  padding:10px;
+  gap: 10px;
+  border-radius:10px;
+  background-color: rgb(228, 255, 228);
+}
+.goalhead{
+  transform: rotate(-90deg);
+  font-size: 24px;
+  font-weight: 800;
+  font-style: italic;
+  color: rgb(0 0 0 / 30%);
+  background:linear-gradient(90deg,rgb(144, 238, 144,0.9),rgb(0, 0, 0,0.05));
+  background-clip:text;
+}
+.goalcon{
+  display:flex;
+  flex-direction:column;
+  flex-wrap: wrap;
+  width: min-content;
+  gap:5px;
+  width:200px;
+}
+.posts{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.post{
+  position:relative;
+  width:300px;
+  display:flex;
+  padding: 20px;
+  gap:5px;
+  border-radius: 20px;
+  flex-direction: column;
+  background:linear-gradient(135deg,rgb(144, 238, 144,0.4),rgb(0, 0, 0,0.05));
+}
+.recyclebadge{
+  position:absolute;
+  transform: rotate(-35deg);
+  height:60px;
+  top:-5px;
+  left:-5px;
+  width:50px;
+}
+.post-image{
+  margin: auto;
+  border-radius: 20px;
+  height: 200px;
+  width: 200px;
+  margin-bottom:10px;
+}
+.logimage{
+  height:150px;
+  width:150px;
+  border-radius: 50%;
 }

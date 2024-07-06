@@ -3,7 +3,7 @@ import React from 'react'
 import Itemupload from "@/components/item_upload"
 const upload = () => {
   return (
-    <section id='home'>
+    <section id='upload'>
       <Itemupload/>
     </section>
   )

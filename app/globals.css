@@ -3,31 +3,93 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg:white;
+  --text:black;
+  --first: lawngreen;
+  --second: lightgreen;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+body{
+  color: var(--text);
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg,rgb(128, 255, 0,0.3),rgb(128, 255, 0,0.05));
+  border: 1px solid rgb(0, 128, 0,0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 0px 0px 10px 10px;
+}
+nav ul{
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  background: linear-gradient(135deg,rgb(0, 128, 0,0.1),rgb(0, 128, 0,0.05));
+  border: 1px solid rgb(255, 255, 255,0.5);
+  padding: 20px;
+  border-radius: 50px;
+}
+.loginbtn{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  background:linear-gradient(135deg,rgb(0, 128, 0,0.1),rgb(0, 128, 0,0.05));
+  padding: 10px;
+  border-radius: 10px;
+}
+.logo{
+  font-size: 24px;
+  font-weight: 700;
+}
+#home,#login{
+  display: flex;
+  min-height: 100dvh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.homebtns{
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+}
+.homebtn{
+  background: linear-gradient(135deg,rgb(128, 255, 0,0.3),rgb(128, 255, 0,0.05));
+  padding: 15px 20px;
+  position: relative;
+  background-size:1px 100px ;
+  border-radius: 50px;
+  display: flex;
+  gap:5px;
+  z-index: 2;
+  transition: background-position 500ms;
+}
+.homebtn::before{
+  position: absolute;
+  content: "";
+  inset: 0; 
+  background: linear-gradient(15deg,rgb(128, 255, 0,0.05)rgb(128, 255, 0,0.3));
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.25s linear;
+}
+.homebtn:hover::before{
+ opacity: 1;
+}
+#order{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 150px;
 }

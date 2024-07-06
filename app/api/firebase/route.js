@@ -21,7 +21,3 @@ const app = initializeApp(firebaseConfig);
 export const storage=getStorage()
 export const database = getFirestore();
 export const firestore=getFirestore();
-
-export default function handler(req, res) {
-  res.status(200).json({ message: "Firebase initialized successfully" });
-}

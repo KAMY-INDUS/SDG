@@ -23,7 +23,7 @@ const Login = () => {
       setUpProviders();
     }, []);
     return <section id='login' className="gap-6">
-      <span className="flex items-center justify-center gap-2 font-semibold" style={{fontSize:28}}>Login in to <Leaf size={20}/>EcoCart</span>
+      <span className="flex items-center justify-center gap-2 font-semibold" style={{fontSize:28}}>Login in <Leaf size={20}/>EcoCart</span>
       {providers && Object.values(providers).map(provider=>(
           <button className="loginbtn shadow-inner" key={provider.id} onClick={()=>signIn(provider.id)}><Image src="/google.png" height={30} width={30}/>Sign In With {provider.name}</button>
   

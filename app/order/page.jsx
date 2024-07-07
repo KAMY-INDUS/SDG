@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { collection, query, getDocs, onSnapshot, updateDoc, doc, setDoc, getDoc } from "firebase/firestore";
+import { collection, query, onSnapshot, updateDoc, doc, getDoc, getDocs } from "firebase/firestore";
 import { firestore, userdb } from '@/firebaseConfig';
 import { useSession } from "next-auth/react";
 import { CircleCheckBig, IndianRupee, ListFilter } from "lucide-react";
@@ -10,7 +10,7 @@ import { MdCategory } from "react-icons/md";
 
 const Order = () => {
   const [posts, setPosts] = useState([]);
-  const [user, setUserdb] = useState({});
+  const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
   const { data: session } = useSession();
@@ -38,7 +38,7 @@ const Order = () => {
       const userDoc = await getDoc(userRef);
       if (userDoc.exists()) {
         const userData = userDoc.data();
-        setUserdb(userData);
+        setUser(userData);
         setLikes(new Set(userData.likes || []));
       }
       setLoading(false);
@@ -55,10 +55,17 @@ const Order = () => {
     return <p>Loading...</p>;
   }
 
-  const updateCart = async (id) => {
+  const updateCart = async (postId) => {
     const docRef = doc(userdb, "users", session.user.name, "profile", "info");
+    const userDoc = await getDoc(docRef);
+    const cartItems = userDoc.data().cart || [];
+    
+    if (!cartItems.includes(postId)) {
+      cartItems.push(postId);
+    }
+
     await updateDoc(docRef, {
-      cart: 2, // Adjust as necessary
+      cart: cartItems,
     });
   };
 
@@ -139,9 +146,13 @@ const Order = () => {
                   <i>Sold By {post.username}</i>
                 </p>
               </div>
-              <span className="atcbtn shadow-inner" style={{ fontSize: 14 }}>
-                <MdCategory />
-                {post.category === "recycled-product" ? "Recycled Product" : "Recyclable Waste"}
+              <span
+                className="atcbtn shadow-inner cursor-pointer"
+                style={{ fontSize: 14 }}
+                onClick={() => updateCart(post.id)}
+              >
+                <FaCartPlus />
+                Add to Cart
               </span>
               <p className="text-justify" style={{ fontSize: 14 }}>
                 {post.desc}
@@ -160,10 +171,6 @@ const Order = () => {
                 </span>
               </span>
             </div>
-            <span className="atcbtn shadow-inner" onClick={() => updateCart(post.id)}>
-              <FaCartPlus />
-              Add to Cart
-            </span>
           </div>
         ))}
       </div>

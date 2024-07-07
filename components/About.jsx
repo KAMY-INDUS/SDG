@@ -49,7 +49,7 @@ const About = () => {
       <motion.span style={{ fontSize: 26, fontWeight: 600 }}>About</motion.span>
       <motion.div className="cards">
         <span className="creatorhead">Creators</span>
-        <motion.div className="card shadow-lg" whileHover={{ scale: 1.05 }}>
+        <motion.div className="card shadow-lg" initial={{translateY:100,filter:'blur(10px)'}} whileInView={{translateY:0,filter:'blur(0)'}} whileHover={{ scale: 1.05 }}>
           <div className="cardtop">
             <Image
               src="/abiprof.jpg"
@@ -77,7 +77,7 @@ const About = () => {
             </Link>
           </span>
         </motion.div>
-        <motion.div className="card shadow-lg" whileHover={{ scale: 1.05 }}>
+        <motion.div className="card shadow-lg" initial={{translateY:100,filter:'blur(10px)'}} whileInView={{translateY:0,filter:'blur(0)'}} whileHover={{ scale: 1.05 }}>
           <div className="cardtop">
             <Image
               src="/yashprof.jpg"
@@ -108,7 +108,7 @@ const About = () => {
       </motion.div>
       <motion.div className="cards">
         <span className="goals">Goals</span>
-        <motion.div className="goalcard shadow-lg" whileHover={{ scale: 1.05 }}>
+        <motion.div className="goalcard shadow-lg" initial={{translateY:100,filter:'blur(10px)'}} whileInView={{translateY:0,filter:'blur(0)'}} whileHover={{ scale: 1.05 }}>
           <span className="goalhead">🎯SDG 9</span>
           <div className="goalcon">
             <span style={{ fontSize: 18, fontWeight: "bolder" }}>
@@ -124,7 +124,7 @@ const About = () => {
             </span>
           </div>
         </motion.div>
-        <motion.div className="goalcard shadow-lg" whileHover={{ scale: 1.05 }}>
+        <motion.div className="goalcard shadow-lg" initial={{translateY:100,filter:'blur(10px)'}} whileInView={{translateY:0,filter:'blur(0)'}} whileHover={{ scale: 1.05 }}>
           <span className="goalhead">🎯SDG 12</span>
           <div className="goalcon">
             <span style={{ fontSize: 18, fontWeight: "bolder" }}>
@@ -142,7 +142,7 @@ const About = () => {
       </motion.div>
       <motion.div className="cards">
         <span className="goals">Why EcoCart</span>
-        <motion.div className="goalcard shadow-lg" whileHover={{ scale: 1.05 }}>
+        <motion.div className="goalcard shadow-lg" initial={{translateY:100,filter:'blur(10px)'}} whileInView={{translateY:0,filter:'blur(0)'}} whileHover={{ scale: 1.05 }}>
           <span className="goalhead">Eco Friendly</span>
           <GaugeCircle
             max={100}
@@ -152,7 +152,7 @@ const About = () => {
             gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
           />
         </motion.div>
-        <motion.div className="goalcard shadow-lg" whileHover={{ scale: 1.05 }}>
+        <motion.div className="goalcard shadow-lg" initial={{translateY:100,filter:'blur(10px)'}} whileInView={{translateY:0,filter:'blur(0)'}} whileHover={{ scale: 1.05 }}>
           <span className="goalhead">Encryption</span>
           <GaugeCircle
             max={100}

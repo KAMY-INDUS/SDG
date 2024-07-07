@@ -40,9 +40,9 @@ const ProductComponent = () => {
 
   return (
     <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg  bg-background py-20 text-black">
-      <span className="font-bold" style={{fontSize:24}}>
+      <span className="font-bold flex items-center justify-center gap-4" style={{fontSize:24}}>
         <span>Order</span>
-        <Link href="/order" style={{fontSize:16}}>View All <ArrowRight/></Link>
+        <Link href="/order" className="flex items-center justify-center" style={{fontSize:16}}>View All <ArrowRight/></Link>
       </span>
       <Marquee pauseOnHover className="[--duration:20s]">
         {firstRow.map((product) => (

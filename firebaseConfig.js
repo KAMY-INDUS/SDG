@@ -16,4 +16,3 @@ export const storage = getStorage(app); // Initialize storage with your Firebase
 export const database = getFirestore(app); // Initialize Firestore database with your Firebase app instance
 export const userdb = getFirestore(app); // Initialize Firestore (assuming a separate database, replace with your setup)
 export const firestore = getFirestore(app); // Initialize another Firestore instance (if needed)
-export const dynamic = "force-static";

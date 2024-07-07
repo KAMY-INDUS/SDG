@@ -3,17 +3,17 @@
 export const navitems = [
     {
         name:"Home",
-        link:"#home",
+        link:"home",
         path:"/",
     },
     {
         name:"About",
-        link:"#about",
+        link:"about",
         path:"/about",
     },
     {
         name:"Order",
-        link:"#order",
+        link:"order",
         path:"/order"
     }
 ]

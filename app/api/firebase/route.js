@@ -18,7 +18,8 @@ const firebaseConfig = {
 
 
 const app = initializeApp(firebaseConfig);
-export const storage=getStorage(app)
+export const storage=getStorage()
 export const database = getFirestore();
 export const userdb = getFirestore();
 export const firestore=getFirestore();
+export const dynamic = "force-static";

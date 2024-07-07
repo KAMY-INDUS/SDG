@@ -22,8 +22,8 @@ const CartPage = () => {
       if (userDoc.exists()) {
         const userData = userDoc.data();
         setUser(userData);
-        setCart(userData.cart || []);
-        calculateTotalAmount(userData.cart || []); // Calculate total amount initially
+        setCart(userData.cart);
+        calculateTotalAmount(userData.cart); // Calculate total amount initially
       }
       setLoading(false);
     };

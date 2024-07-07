@@ -1,5 +1,5 @@
 "use client";
-import { userdb } from '@/app/api/firebase/route';
+import { userdb } from '@/firebaseConfig';
 import { collection, doc, getDoc, setDoc } from 'firebase/firestore';
 import { HandCoins, ShoppingBasket, ShoppingCart } from 'lucide-react';
 import { useSession } from 'next-auth/react';

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { collection, query, getDocs, onSnapshot, updateDoc, doc, setDoc, getDoc } from "firebase/firestore";
-import { firestore, userdb } from './../firebaseConfig';
+import { firestore, userdb } from '@/firebaseConfig';
 import { useSession } from "next-auth/react";
 import { CircleCheckBig, IndianRupee, ListFilter } from "lucide-react";
 import Image from "next/image";

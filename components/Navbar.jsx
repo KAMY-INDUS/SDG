@@ -23,7 +23,7 @@ const Navbar = () => {
             {
                 navitems.map((navitem,i)=>(
                     <li className="navitem" key={i}>
-                        <Link href={navitem.link}>{navitem.name}</Link>
+                        <Link href={navitem.path}>{navitem.name}</Link>
                     </li>
                 ))
             }

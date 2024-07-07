@@ -10,5 +10,5 @@ export const options={
           
     ],
     
-    secret:process.env.NEXTHAUTH_SECRET,
+    secret:process.env.NEXTAUTH_SECRET,
 }

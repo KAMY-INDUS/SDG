@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { useSession } from 'next-auth/react';
 import { userdb } from '@/firebaseConfig'; // Update this path according to your project structure
+import {CircleOff} from 'lucide-react';
 
 const CartPage = () => {
   const [user, setUser] = useState({});
@@ -58,7 +59,7 @@ const CartPage = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <p style={{fontSize:18,fontWeight:'bold'}}>Due to Time Constraint. We have only built Backend for Cart</p>
+      <p style={{fontSize:18,fontWeight:'bold',display:'flex',gap:4}}><CircleOff />Due to Time Constraint. We have only built Backend for Cart</p>
     </div>
   );
 };

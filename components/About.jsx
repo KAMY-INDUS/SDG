@@ -164,53 +164,53 @@ const About = () => {
         </motion.div>
       </motion.div>
       <motion.div
-        className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg  bg-background"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <span
-          className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-green to-gray-300 bg-clip-text text-center text-6xl font-semibold leading-none text-transparent dark:from-white dark:to-black"
-          style={{ width: "min-content" }}
-        >
-          Techstack Used
-        </span>
+  className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background"
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.5 }}
+>
+  <span
+    className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-white to-green-500 bg-clip-text text-center text-6xl font-semibold leading-none text-transparent"
+    style={{ width: "min-content" }}
+  >
+    Techstack Used
+  </span>
 
-        <OrbitingCircles
-          className="size-[30px] border bg-transparent"
-          duration={20}
-          delay={20}
-          radius={80}
-        >
-          <SiNextdotjs size={64} />
-        </OrbitingCircles>
-        <OrbitingCircles
-          className="size-[30px] border-none bg-transparent"
-          duration={20}
-          delay={10}
-          radius={80}
-        >
-          <RiFirebaseFill size={72} />
-        </OrbitingCircles>
+  <OrbitingCircles
+    className="size-[30px] border shadow-md"
+    duration={20}
+    delay={20}
+    radius={60}
+  >
+    <SiNextdotjs color={"#4d8c57"} size={64} />
+  </OrbitingCircles>
+  <OrbitingCircles
+    className="size-[30px] border shadow-md"
+    duration={20}
+    delay={10}
+    radius={60}
+  >
+    <RiFirebaseFill color={"#4d8c57"} size={72} />
+  </OrbitingCircles>
 
-        <OrbitingCircles
-          className="size-[50px] border bg-transparent"
-          radius={190}
-          duration={20}
-          reverse
-        >
-          <TbBrandThreejs size={54} />
-        </OrbitingCircles>
-        <OrbitingCircles
-          className="size-[50px] border bg-transparent"
-          radius={190}
-          duration={20}
-          delay={20}
-          reverse
-        >
-          <RxVercelLogo size={54} />
-        </OrbitingCircles>
-      </motion.div>
+  <OrbitingCircles
+    className="size-[50px] border shadow-md"
+    radius={135}
+    duration={20}
+    reverse
+  >
+    <TbBrandThreejs color={"#4d8c57"} size={54} />
+  </OrbitingCircles>
+  <OrbitingCircles
+    className="size-[50px] border shadow-md"
+    radius={135}
+    duration={20}
+    delay={20}
+    reverse
+  >
+    <RxVercelLogo color={"#4d8c57"} size={54} />
+  </OrbitingCircles>
+</motion.div>
     </motion.section>
     
   );

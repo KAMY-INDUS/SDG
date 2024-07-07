@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from './../components/Navbar';
 import AuthProvider from './../components/AuthProvider';
 import Mobnav from './../components/Mobnav';
+import Followus from './../components/Followus';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
               <Mobnav/>
             </div>
           </main>
+          <Followus/>
           </AuthProvider>
       </body>
     </html>

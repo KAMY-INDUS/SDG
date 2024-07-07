@@ -1,9 +1,40 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 import { Mail, Phone } from 'lucide-react';
 import Link from 'next/link';
+import GaugeCircle from './magicui/gauge-circle';
+import { SiNextdotjs } from "react-icons/si";
+import OrbitingCircles from './magicui/orbiting-circles';
+import { RiFirebaseFill } from "react-icons/ri";
+import { TbBrandThreejs } from "react-icons/tb";
+import { RxVercelLogo } from "react-icons/rx";
 
 const About = () => {
+    const [value1, setValue1] = useState(0);
+    const [value2, setValue2] = useState(0);
+ 
+  useEffect(() => {
+    const handleIncrement1 = (prev) => {
+      if (prev === 100) {
+        return 100;
+      }
+      return prev + 5;
+    };
+
+    const handleIncrement2 = (prev) => {
+        if (prev === 80) {
+          return 80;
+        }
+        return prev + 5;
+      };
+    
+    setValue1(handleIncrement1);
+    setValue2(handleIncrement2)
+    const interval = setInterval(() => {setValue1(handleIncrement1);setValue2(handleIncrement2)}, 250);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id='about'>
         <span style={{fontSize:26,fontWeight:600}}>About</span>
@@ -51,8 +82,73 @@ const About = () => {
                 </div>
             </div>
         </div>
+        <div className="cards">
+            <span className='goals'>Why EcoCart</span>
+            <div className="goalcard shadow-lg">
+                <span className='goalhead'>Eco Friendly</span>
+                <GaugeCircle
+                max={100}
+                min={0}
+                value={value1}
+                gaugePrimaryColor="lightgreen"
+                gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
+                />
+            </div>
+            <div className="goalcard shadow-lg">
+                <span className='goalhead'>Encrytion</span>
+                <GaugeCircle
+                max={100}
+                min={0}
+                value={value2}
+                gaugePrimaryColor="lightgreen"
+                gaugeSecondaryColor="rgba(0, 0, 0, 0.1)"
+                />
+            </div>
+        </div>
+        <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg  bg-background">
+      <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-green to-gray-300 bg-clip-text text-center text-6xl font-semibold leading-none text-transparent dark:from-white dark:to-black" style={{width:'min-content'}}>
+        Techstack Used
+      </span>
+ 
+      <OrbitingCircles
+        className="size-[30px] border bg-transparent"
+        duration={20}
+        delay={20}
+        radius={80}
+      >
+        <SiNextdotjs size={64}/>
+      </OrbitingCircles>
+      <OrbitingCircles
+        className="size-[30px] border-none bg-transparent"
+        duration={20}
+        delay={10}
+        radius={80}
+      >
+        <RiFirebaseFill size={72}/>
+      </OrbitingCircles>
+ 
+      <OrbitingCircles
+        className="size-[50px] border bg-transparent"
+        radius={190}
+        duration={20}
+        reverse
+      >
+        <TbBrandThreejs size={54}/>
+      </OrbitingCircles>
+      <OrbitingCircles
+        className="size-[50px] border bg-transparent"
+        radius={190}
+        duration={20}
+        delay={20}
+        reverse
+      >
+        <RxVercelLogo size={54}/>
+      </OrbitingCircles>
+    </div>
     </section>
   )
 }
 
 export default About
+
+

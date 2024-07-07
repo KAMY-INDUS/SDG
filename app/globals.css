@@ -36,7 +36,6 @@ nav ul{
   gap: 10px;
   list-style: none;
   background: linear-gradient(135deg,rgb(0, 128, 0,0.1),rgb(0, 128, 0,0.05));
-  border: 1px solid rgb(255, 255, 255,0.5);
   padding: 20px;
   border-radius: 50px;
 }
@@ -89,6 +88,15 @@ nav ul{
  opacity: 1;
 }
 #order{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  padding-top: 150px;
+}
+#profile{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -204,21 +212,30 @@ nav ul{
   background-clip:text;
   font-weight: 800;
   font-size:24px;
+  left: 50px;
 }
 .goals{
   transform: rotate(-90deg);
+  position: relative;
   color: rgb(0 0 0 / 20%);
   background:linear-gradient(90deg,rgb(144, 238, 144,0.9),rgb(0, 0, 0,0.05));
   background-clip:text;
   font-weight: 800;
   font-size:24px;
+  left: 65px;
 }
-@media (max-width:800px) {
+@media (max-width:850px) {
+  .goals{
+    text-align: center;
+    transform: rotate(0deg);
+    left: 0px;
+  }
   .creatorhead{
     transform: rotate(0deg);
     text-align: center;
     left:0px;
     margin: 0px;
+    left: 0px;
   }
   .cards{
     gap: 20px;
@@ -233,7 +250,7 @@ nav ul{
     padding-bottom: 100px;
   }
   #profile{
-  padding-top:150px;
+  padding:150px;
   padding-bottom: 100px;
   }
 }
@@ -286,31 +303,122 @@ nav ul{
 }
 .post{
   position:relative;
-  width:300px;
+  width:250px;
   display:flex;
-  padding: 20px;
   gap:5px;
   border-radius: 20px;
   flex-direction: column;
   background:linear-gradient(135deg,rgb(144, 238, 144,0.4),rgb(0, 0, 0,0.05));
 }
-.recyclebadge{
-  position:absolute;
-  transform: rotate(-35deg);
-  height:60px;
-  top:-5px;
-  left:-5px;
-  width:50px;
-}
 .post-image{
   margin: auto;
   border-radius: 20px;
   height: 200px;
-  width: 200px;
+  width: 250px;
   margin-bottom:10px;
 }
 .logimage{
   height:150px;
   width:150px;
   border-radius: 50%;
+}
+.verifybtn{
+  background-color:lightgreen;
+  border-radius:20px 20px 20px 0px;
+  display:flex;
+  color:black;
+  padding:10px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+.itembtn{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 4px 10px;
+}
+.atcbtn{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  gap:5px;
+  background-color: rgba(144, 238, 144, 0.4);
+  margin:auto;
+  margin-bottom: 10px;
+  padding:5px 10px;
+  border-radius:10px;
+  font-size: 18px;
+}
+.followbtn{
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:5px;
+  background-color: rgb(144, 238, 144,0.4);
+  backdrop-filter: blur(10px);
+  padding: 10px;
+  border-radius: 10px;
+}
+@media (max-width:640px){
+  .followbtn{
+    bottom:80px;
+  }
+}
+.dialog{
+  background-color: rgb(128, 255, 0,0.6);
+  backdrop-filter: blur(10px);
+  border-radius:5px;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  justify-content: space-evenly;
+}
+.dialogitem{
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.followitem{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 10px;
+  gap:6px;
+  width:100%;
+}
+.followitems{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.homecount{
+  display: flex;
+  gap: 15px;
+  font-size:18px;
+  padding-top:20px;
+}
+.homebg{
+  position: absolute;
+  z-index:-2;
+  left: 0;
+  opacity:0.7;
+  top:0;
+  bottom:0;
+  height:100%;
+  object-fit: fill;
+  mask-image: linear-gradient(180deg,rgb(245, 245, 245,1),rgb(255, 255, 255,0));
+}
+.review-card{
+  color:black;
+  height: 200px;
+  border: 2px solid lightgreen;
+  border-radius:6px;
 }

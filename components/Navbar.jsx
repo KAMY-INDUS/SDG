@@ -7,6 +7,7 @@ import { Leaf, ShoppingBag, User, Wind } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { DropdownMenu,DropdownMenuContent,DropdownMenuTrigger } from './ui/dropdown-menu';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
 

@@ -55,13 +55,15 @@ const Order = () => {
     return <p>Loading...</p>;
   }
 
-  const updateCart = async (postId) => {
+  const updateCart = async (post) => {
     const docRef = doc(userdb, "users", session.user.name, "profile", "info");
     const userDoc = await getDoc(docRef);
     const cartItems = userDoc.data().cart || [];
-    
-    if (!cartItems.includes(postId)) {
-      cartItems.push(postId);
+
+    const itemExists = cartItems.some(item => item.id === post.id);
+
+    if (!itemExists) {
+      cartItems.push(post);
     }
 
     await updateDoc(docRef, {
@@ -149,7 +151,7 @@ const Order = () => {
               <span
                 className="atcbtn shadow-inner cursor-pointer"
                 style={{ fontSize: 14 }}
-                onClick={() => updateCart(post.id)}
+                onClick={() => updateCart(post)}
               >
                 <FaCartPlus />
                 Add to Cart

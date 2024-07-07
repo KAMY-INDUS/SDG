@@ -4,7 +4,7 @@ import { Mail, Trash2, User } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import { firestore } from '../api/firebase/route';
+import { firestore } from './../firebaseConfig';
 
 const Profile = () => {
   const [posts, setPosts] = useState([]);

@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import Marquee from "@/components/magicui/marquee";
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { firestore } from "@/app/api/firebase/route"; // Adjust the path to your Firebase configuration
+import { firestore } from '../firebaseConfig';
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 

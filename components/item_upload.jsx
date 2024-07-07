@@ -3,7 +3,7 @@ import { ref as storageRef, uploadBytes, getDownloadURL, ref } from 'firebase/st
 import { v4 } from 'uuid';
 import { useSession } from "next-auth/react";
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { database, firestore, storage } from './../app/api/firebase/route';
+import { database, firestore, storage } from './../firebaseConfig';
 import { BadgeIndianRupee, SquareGanttChart, SquarePen } from 'lucide-react';
 
 

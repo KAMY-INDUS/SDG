@@ -1,10 +1,6 @@
-
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import {getStorage} from 'firebase/storage';
-import { getDatabase } from "firebase/database";
+import { getStorage } from 'firebase/storage';
 import { getFirestore } from "firebase/firestore";
-
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_apiKey,
@@ -16,10 +12,9 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_measurementId
 };
 
-
 const app = initializeApp(firebaseConfig);
-export const storage=getStorage()
-export const database = getFirestore();
-export const userdb = getFirestore();
-export const firestore=getFirestore();
+export const storage = getStorage(app); // Initialize storage with your Firebase app instance
+export const database = getFirestore(app); // Initialize Firestore database with your Firebase app instance
+export const userdb = getFirestore(app); // Initialize Firestore (assuming a separate database, replace with your setup)
+export const firestore = getFirestore(app); // Initialize another Firestore instance (if needed)
 export const dynamic = "force-static";

@@ -57,24 +57,8 @@ const CartPage = () => {
   }
 
   return (
-    <div id='cart'>
-      <h1>Cart Page</h1>
-      <div>
-        <h2>Cart</h2>
-        {cart.length > 0 ? (
-          cart.map((item) => (
-            <div className="post" key={item.id}>
-              <h3>{item.name}</h3>
-              <p>Price: ${item.price}</p>
-              <p>Quantity: {item.quantity}</p>
-              <button onClick={() => removeFromCart(item.id)}>Remove</button>
-            </div>
-          ))
-        ) : (
-          <p>Your cart is empty</p>
-        )}
-        <p>Total Amount: ${totalAmount}</p>
-      </div>
+    <div className="flex items-center justify-center min-h-screen">
+      <p style={{fontSize:18,fontWeight:'bold'}}>Due to Time Constraint. We have only built Backend for Cart</p>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { navitems } from './../Schemas/index';
 import { signOut, useSession } from 'next-auth/react';
 import { Leaf, ShoppingBag, User, Wind } from 'lucide-react';
@@ -8,10 +8,37 @@ import { usePathname } from 'next/navigation';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from './ui/dropdown-menu';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { userdb } from '@/firebaseConfig';
+import { doc, getDoc } from 'firebase/firestore';
 
 const Navbar = () => {
     const { data: session } = useSession();
     const pathName = usePathname();
+    const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [cart, setCart] = useState([]);
+
+    useEffect(() => {
+        if (!session) return;
+    
+        const userRef = doc(userdb, "users", session.user.name, "profile", "info");
+    
+        const fetchUser = async () => {
+          const userDoc = await getDoc(userRef);
+          if (userDoc.exists()) {
+            const userData = userDoc.data();
+            setUser(userData);
+            setCart(userData.cart || []); // Calculate total amount initially
+          }
+          setLoading(false);
+        };
+    
+        fetchUser();
+    
+        return () => {
+          // Clean up if necessary
+        };
+      }, [session])
 
     return (
         <>
@@ -31,7 +58,7 @@ const Navbar = () => {
                     <div className="navside">
                         {session?.user ? (
                             <div className='flex items-center justify-center gap-6'>
-                                <Link href="/cart" className='flex gap-2'><ShoppingBag />0</Link>
+                                <Link href="/cart" className='flex gap-2'><ShoppingBag />{cart.length}</Link>
                                 <DropdownMenu>
                                     <DropdownMenuTrigger className='outline-none'>
                                         <motion.span className='loginbtn shadow-inner' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>

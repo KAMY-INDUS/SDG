@@ -17,7 +17,7 @@ const Order = () => {
   const [likes, setLikes] = useState(new Set());
 
   useEffect(() => {
-    if (!session) return;
+    if (!session) return(<div className="flex items-center justify-center min-h-screen"><span>PLease Login to Order</span></div>);
 
     const userPostsRef = collection(firestore, "products");
     const userRef = doc(userdb, "users", session.user.name, "profile", "info");

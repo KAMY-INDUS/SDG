@@ -471,7 +471,7 @@ nav ul{
 @keyframes stroke {
   100% {
       font-size: 1.8rem;
-      color: black;
+      color: white;
       -webkit-text-stroke-width: 2.5px;
       -webkit-text-stroke-color: transparent;
   }

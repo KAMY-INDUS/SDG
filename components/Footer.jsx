@@ -5,9 +5,9 @@ const Footer = () => {
   return (
     <section id="footer">
         <div className="flex flex-col items-center justify-center">
-            <span><FaAndroid size={54} color={"#3DDC84"}/></span>
             <span>Copyright © EcoCart</span>
             <span>Created by Abinav & Yashvanth</span>
+            <span className="flex gap-2 items-center justify-center"><FaAndroid size={54} color={"#3DDC84"}/><p>Android Club WebWorks Hackathon</p></span>
         </div>
     </section>
   )

@@ -429,6 +429,7 @@ nav ul{
 }
 
 .loadcon {
+  font-size:1.6rem;
   font-weight: 700;
   display: flex;
   gap: 10px;
@@ -470,7 +471,7 @@ nav ul{
 
 @keyframes stroke {
   100% {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       color: white;
       -webkit-text-stroke-width: 2.5px;
       -webkit-text-stroke-color: transparent;

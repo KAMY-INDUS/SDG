@@ -543,6 +543,7 @@ nav ul{
   margin-bottom: -25px;
 }
 .cartContainer {
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
   min-height: 100dvh;

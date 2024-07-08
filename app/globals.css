@@ -542,3 +542,70 @@ nav ul{
   border: 1px solid rgb(0, 128, 0,0.1);
   margin-bottom: -25px;
 }
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  align-items:center;
+  justify-content:center;
+}
+
+.heading {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #666;
+}
+
+.cartItems {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cartimg{
+  height: 100px;
+  width:120px;
+  border-radius:25px 0px 0px 25px;
+}
+.cartItem {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 25px 100px 100px 25px;
+  display: flex;
+  gap: 20px;
+  padding-right:10px;
+  align-items: center;
+  background: linear-gradient(135deg,rgb(128, 255, 0,0.3),rgb(128, 255, 0,0.05));
+  border: 1px solid rgb(0, 128, 0,0.1);
+  backdrop-filter: blur(20px);
+}
+
+.cartItem h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.cartItem p {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+  display:flex;
+  align-items:center;
+}
+
+.totalPrice {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #333;
+  display:flex;
+  align-items:center;
+}
+

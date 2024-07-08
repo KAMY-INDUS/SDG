@@ -63,7 +63,7 @@ const Order = () => {
     const itemExists = cartItems.some(item => item.id === post.id);
 
     if (!itemExists) {
-      cartItems.push(post);
+      cartItems.push(post.id);
     }
 
     await updateDoc(docRef, {

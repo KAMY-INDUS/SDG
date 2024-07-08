@@ -60,7 +60,7 @@ const Order = () => {
     const userDoc = await getDoc(docRef);
     const cartItems = userDoc.data().cart || [];
 
-    const itemExists = cartItems.some(item => item.id === post.id);
+    const itemExists = cartItems.some(item => item === post.id);
 
     if (!itemExists) {
       cartItems.push(post.id);

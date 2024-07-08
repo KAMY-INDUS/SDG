@@ -1,67 +1,93 @@
-// components/CartPage.jsx
 "use client";
-import React, { useState, useEffect } from 'react';
-import { doc, getDoc } from 'firebase/firestore';
-import { useSession } from 'next-auth/react';
-import { userdb } from '@/firebaseConfig'; // Update this path according to your project structure
-import {CircleOff} from 'lucide-react';
 
-const CartPage = () => {
-  const [user, setUser] = useState({});
+import { userdb, firestore } from '@/firebaseConfig';
+import { collection, doc, onSnapshot, query } from 'firebase/firestore';
+import { useSession } from 'next-auth/react';
+import React, { useEffect, useState } from 'react';
+import { IndianRupee, Trash2 } from 'lucide-react';
+import Image from 'next/image';
+
+const Cartpage = () => {
+  const [posts, setPosts] = useState([]);
+  const [userCart, setUserCart] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [cart, setCart] = useState([]);
-  const [totalAmount, setTotalAmount] = useState(0);
   const { data: session } = useSession();
 
   useEffect(() => {
     if (!session) return;
 
-    const userRef = doc(userdb, "users", session.user.name, "profile", "info");
+    const userRef = doc(userdb, 'users', session.user.name, 'profile', 'info');
+    const userPostsRef = collection(firestore, 'products');
+    const q = query(userPostsRef);
 
-    const fetchUser = async () => {
-      const userDoc = await getDoc(userRef);
-      if (userDoc.exists()) {
-        const userData = userDoc.data();
-        setUser(userData);
-        setCart(userData.cart);
-        calculateTotalAmount(userData.cart); // Calculate total amount initially
+    const unsubscribePosts = onSnapshot(q, (querySnapshot) => {
+      const fetchedPosts = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setPosts(fetchedPosts);
+    }, (error) => {
+      console.error('Error fetching posts: ', error);
+    });
+
+    const unsubscribeUser = onSnapshot(userRef, (docSnapshot) => {
+      if (docSnapshot.exists()) {
+        const userData = docSnapshot.data();
+        setUserCart(userData.cart || []);
       }
       setLoading(false);
-    };
-
-    fetchUser();
+    }, (error) => {
+      console.error('Error fetching user data: ', error);
+    });
 
     return () => {
-      // Clean up if necessary
+      unsubscribePosts();
+      unsubscribeUser();
     };
   }, [session]);
 
-  const calculateTotalAmount = (cartItems) => {
-    let total = 0;
-
-    if (!Array.isArray(cartItems)) {
-      console.error('Cart items is not an array:', cartItems);
-      return;
-    }
-
-    cartItems.forEach((item) => {
-      if (item.price && item.quantity) { // Check if price and quantity are defined
-        total += (item.price * item.quantity);
-      }
-    });
-
-    setTotalAmount(total);
-  };
-
   if (loading) {
-    return <p>Loading...</p>;
+    return <p className="loading">Loading...</p>;
   }
 
+  const handleDelete = async (postId) => {
+    if (!session) return;
+
+    const userRef = doc(userdb, 'users', session.user.name, 'profile', 'info');
+    const updatedCart = userCart.filter(id => id !== postId);
+
+    try {
+      await updateDoc(userRef, { cart: updatedCart });
+      setUserCart(updatedCart);
+    } catch (error) {
+      console.error('Error deleting item from cart: ', error);
+    }
+  };
+
+  const filteredPosts = posts.filter(post => userCart.includes(post.id));
+  const totalPrice = filteredPosts.reduce((total, post) => parseInt(total) + parseInt(post.price), 0);
+
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <p style={{fontSize:18,fontWeight:'bold',display:'flex',gap:4}}><CircleOff />Due to Time Constraint. We have only built Backend for Cart</p>
+    <div className="cartContainer">
+      
+      {filteredPosts.length===0 ? <h1>Your Cart is Empty</h1>:<>
+      <h1 className="heading">Your Cart</h1>
+      <div className="cartItems">
+        {filteredPosts.map(post => (
+          <div key={post.id} className="cartItem">
+            <Image src={post.image} height={1000} width={1000} className="cartimg"/>
+            <h2>{post.name}</h2>
+            <p>Price: <IndianRupee/>{post.price}</p>
+            <span onClick={()=>handleDelete(post.id)}><Trash2/></span>
+          </div>
+        ))}
+      </div>
+      <span className='totalPrice'>Total Price: <IndianRupee/>{totalPrice}</span>
+      </>}
+
+      
     </div>
   );
 };
 
-export default CartPage;
+export default Cartpage;
